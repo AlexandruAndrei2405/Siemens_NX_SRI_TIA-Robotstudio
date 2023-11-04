@@ -1,0 +1,952 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<ISO15745Profile xmlns="http://www.profibus.com/GSDML/2003/11/DeviceProfile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.profibus.com/GSDML/2003/11/DeviceProfile ..\xsd\GSDML-DeviceProfile-V2.35.xsd">
+  <ProfileHeader>
+    <ProfileIdentification>PROFINET Device Profile</ProfileIdentification>
+    <ProfileRevision>1.00</ProfileRevision>
+    <ProfileName>Device Profile for PROFINET Devices</ProfileName>
+    <ProfileSource>PROFIBUS Nutzerorganisation e. V. (PNO)</ProfileSource>
+    <ProfileClassID>Device</ProfileClassID>
+    <ISO15745Reference>
+      <ISO15745Part>4</ISO15745Part>
+      <ISO15745Edition>1</ISO15745Edition>
+      <ProfileTechnology>GSDML</ProfileTechnology>
+    </ISO15745Reference>
+  </ProfileHeader>
+  <ProfileBody>
+    <DeviceIdentity VendorID="0x0277" DeviceID="0x0002">
+      <InfoText TextId="DeviceDescription" />
+      <VendorName Value="Staeubli" />
+    </DeviceIdentity>
+    <DeviceFunction>
+      <Family MainFamily="I/O" ProductFamily="CS9" />
+    </DeviceFunction>
+    <ApplicationProcess>
+      <DeviceAccessPointList>
+        <DeviceAccessPointItem ID="DIM 1" PhysicalSlots="0..255" ModuleIdentNumber="0x00000001" PNIO_Version="V2.35" MinDeviceInterval="32" ImplementationType="netX" LLDP_NoD_Supported="true" DNS_CompatibleName="cs9" FixedInSlots="0" AddressAssignment="DCP;LOCAL" NameOfStationNotTransferable="true" ObjectUUID_LocalIndex="1" MultipleWriteSupported="true" DeviceAccessSupported="true" NumberOfDeviceAccessAR="1" CheckDeviceID_Allowed="true" ResetToFactoryModes="2">
+          <ModuleInfo>
+            <Name TextId="ID_NAME_DIM1" />
+            <InfoText TextId="DIM1_Infotext" />
+            <VendorName Value="Staeubli" />
+            <OrderNumber Value="2231.000" />
+            <HardwareRelease Value="1" />
+            <SoftwareRelease Value="2.0.x" />
+          </ModuleInfo>
+          <CertificationInfo ApplicationClass="" ConformanceClass="B" NetloadClass="III" />
+          <SubslotList>
+            <SubslotItem SubslotNumber="32768" TextId="X1" />
+            <SubslotItem SubslotNumber="32769" TextId="X1P1" />
+            <SubslotItem SubslotNumber="32770" TextId="X1P2" />
+          </SubslotList>
+          <IOConfigData MaxInputLength="1440" MaxOutputLength="1440" />
+          <UseableModules>
+            <ModuleItemRef ModuleItemTarget="256 Bytes Input" FixedInSlots="1" />
+            <ModuleItemRef ModuleItemTarget="256 Bytes Output" FixedInSlots="2" />
+          </UseableModules>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="DIM 1" SubmoduleIdentNumber="0x00000000" Writeable_IM_Records="1 2 3 4" MayIssueProcessAlarm="true">
+              <IOData />
+              <ModuleInfo CategoryRef="DAP Module">
+                <Name TextId="DAP v5.0" />
+                <InfoText TextId="DAP1_Infotext" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+          <SystemDefinedSubmoduleList>
+            <InterfaceSubmoduleItem ID="IDS_DAP1" SupportedRT_Class="Class1" SupportedRT_Classes="RT_CLASS_1" SupportedProtocols="SNMP;LLDP" NetworkComponentDiagnosisSupported="true" SubslotNumber="32768" TextId="PN-IO" SubmoduleIdentNumber="0x00000001" PTP_BoundarySupported="true" DCP_BoundarySupported="true" DelayMeasurementSupported="true">
+              <ApplicationRelations StartupMode="Advanced;Legacy">
+                <!-- we support 1 ms  2 ms  4 ms  as Base Sendclockfactor -->
+                <TimingProperties SendClock="32 64 128" ReductionRatio="1 2 4 8 16 32 64 128 256 512" />
+              </ApplicationRelations>
+              <MediaRedundancy SupportedRole="Client" />
+            </InterfaceSubmoduleItem>
+            <!-- SubmoduleIdentNumber of PortSubmoduleItem's should be different from
+			     SubmoduleIdentNumber from InterfaceSubmoduleItem - GSD checker signals a warning -->
+            <PortSubmoduleItem CheckMAUTypeSupported="true" ID="IDS_DAP1_PORT1" SubslotNumber="32769" TextId="Port1" SubmoduleIdentNumber="0x00000002" MaxPortTxDelay="72" MaxPortRxDelay="320" PortDeactivationSupported="true" LinkStateDiagnosisCapability="Up+Down" IsDefaultRingport="true">
+              <MAUTypeList>
+                <MAUTypeItem Value="16" />
+              </MAUTypeList>
+            </PortSubmoduleItem>
+            <PortSubmoduleItem CheckMAUTypeSupported="true" ID="IDS_DAP1_PORT2" SubslotNumber="32770" TextId="Port2" SubmoduleIdentNumber="0x00000002" MaxPortTxDelay="72" MaxPortRxDelay="320" PortDeactivationSupported="true" LinkStateDiagnosisCapability="Up+Down" IsDefaultRingport="true">
+              <MAUTypeList>
+                <MAUTypeItem Value="16" />
+              </MAUTypeList>
+            </PortSubmoduleItem>
+          </SystemDefinedSubmoduleList>
+        </DeviceAccessPointItem>
+      </DeviceAccessPointList>
+      <ModuleList>
+        <!-- Input modulee -->
+        <ModuleItem ID="1 Byte Input" ModuleIdentNumber="0x00000002">
+          <ModuleInfo CategoryRef="Input Module">
+            <Name TextId="1 Byte Input" />
+            <InfoText TextId="1 Byte Input module" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="1" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="true">
+              <IOData>
+                <Input>
+                  <DataItem DataType="OctetString" Length="1" TextId="Inputs" />
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="1 Byte Input" />
+                <InfoText TextId="1 Byte Input submodule" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="2 Bytes Input" ModuleIdentNumber="0x00000004">
+          <ModuleInfo CategoryRef="Input Module">
+            <Name TextId="2 Bytes Input" />
+            <InfoText TextId="2 Bytes Input module" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="3" SubmoduleIdentNumber="0x00000003" MayIssueProcessAlarm="true">
+              <IOData>
+                <Input>
+                  <DataItem DataType="OctetString" Length="2" TextId="Inputs" />
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="2 Bytes Input" />
+                <InfoText TextId="2 Bytes Input submodule" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="3 Bytes Input" ModuleIdentNumber="0x00000006">
+          <ModuleInfo CategoryRef="Input Module">
+            <Name TextId="3 Bytes Input" />
+            <InfoText TextId="3 Bytes Input module" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="5" SubmoduleIdentNumber="0x00000005" MayIssueProcessAlarm="true">
+              <IOData>
+                <Input>
+                  <DataItem DataType="OctetString" Length="3" TextId="Inputs" />
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="3 Bytes Input" />
+                <InfoText TextId="3 Bytes Input submodule" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="4 Bytes Input" ModuleIdentNumber="0x00000008">
+          <ModuleInfo CategoryRef="Input Module">
+            <Name TextId="4 Bytes Input" />
+            <InfoText TextId="4 Bytes Input module" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="7" SubmoduleIdentNumber="0x00000007" MayIssueProcessAlarm="true">
+              <IOData>
+                <Input>
+                  <DataItem DataType="OctetString" Length="4" TextId="Inputs" />
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="4 Bytes Input" />
+                <InfoText TextId="4 Bytes Input submodule" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="8 Bytes Input" ModuleIdentNumber="0x0000000A">
+          <ModuleInfo CategoryRef="Input Module">
+            <Name TextId="8 Bytes Input" />
+            <InfoText TextId="8 Bytes Input module" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="9" SubmoduleIdentNumber="0x00000009" MayIssueProcessAlarm="true">
+              <IOData>
+                <Input>
+                  <DataItem DataType="OctetString" Length="8" TextId="Inputs" />
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="8 Bytes Input" />
+                <InfoText TextId="8 Bytes Input submodule" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="12 Bytes Input" ModuleIdentNumber="0x0000000C">
+          <ModuleInfo CategoryRef="Input Module">
+            <Name TextId="12 Bytes Input" />
+            <InfoText TextId="12 Bytes Input module" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="11" SubmoduleIdentNumber="0x0000000B" MayIssueProcessAlarm="true">
+              <IOData>
+                <Input>
+                  <DataItem DataType="OctetString" Length="12" TextId="Inputs" />
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="12 Bytes Input" />
+                <InfoText TextId="12 Bytes Input submodule" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="16 Bytes Input" ModuleIdentNumber="0x0000000E">
+          <ModuleInfo CategoryRef="Input Module">
+            <Name TextId="16 Bytes Input" />
+            <InfoText TextId="16 Bytes Input module" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="13" SubmoduleIdentNumber="0x0000000D" MayIssueProcessAlarm="true">
+              <IOData>
+                <Input>
+                  <DataItem DataType="OctetString" Length="16" TextId="Inputs" />
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="16 Bytes Input" />
+                <InfoText TextId="16 Bytes Input submodule" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="20 Bytes Input" ModuleIdentNumber="0x00000010">
+          <ModuleInfo CategoryRef="Input Module">
+            <Name TextId="20 Bytes Input" />
+            <InfoText TextId="20 Bytes Input module" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="15" SubmoduleIdentNumber="0x0000000F" MayIssueProcessAlarm="true">
+              <IOData>
+                <Input>
+                  <DataItem DataType="OctetString" Length="20" TextId="Inputs" />
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="20 Bytes Input" />
+                <InfoText TextId="20 Bytes Input submodule" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="32 Bytes Input" ModuleIdentNumber="0x00000012">
+          <ModuleInfo CategoryRef="Input Module">
+            <Name TextId="32 Bytes Input" />
+            <InfoText TextId="32 Bytes Input module" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="17" SubmoduleIdentNumber="0x00000011" MayIssueProcessAlarm="true">
+              <IOData>
+                <Input>
+                  <DataItem DataType="OctetString" Length="32" TextId="Inputs" />
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="32 Bytes Input" />
+                <InfoText TextId="32 Bytes Input submodule" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="64 Bytes Input" ModuleIdentNumber="0x00000014">
+          <ModuleInfo CategoryRef="Input Module">
+            <Name TextId="64 Bytes Input" />
+            <InfoText TextId="64 Bytes Input module" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="19" SubmoduleIdentNumber="0x00000013" MayIssueProcessAlarm="true">
+              <IOData>
+                <Input>
+                  <DataItem DataType="OctetString" Length="64" TextId="Inputs" />
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="64 Bytes Input" />
+                <InfoText TextId="64 Bytes Input submodule" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="256 Bytes Input" ModuleIdentNumber="0x000000BB">                                                                                                                                                                                                                
+          <ModuleInfo CategoryRef="Input Module">                                                                                                                                                                                                                
+            <Name TextId="256 Bytes Input" />                                                                                                                                                                                                                
+            <InfoText TextId="256 Bytes Input module" />                                                                                                                                                                                                                
+          </ModuleInfo>                                                                                                                                                                                                                
+          <VirtualSubmoduleList>                                                                                                                                                                                                                
+            <VirtualSubmoduleItem ID="23" SubmoduleIdentNumber="0x000000BA" MayIssueProcessAlarm="true">                                                                                                                                                                                                                
+              <IOData>                                                                                                                                                                                                                
+                <Input>                                                                                                                                                                                                                
+                  <DataItem DataType="OctetString" Length="256" TextId="Inputs" />                                                                                                                                                                                                                
+                </Input>                                                                                                                                                                                                                
+              </IOData>                                                                                                                                                                                                                
+              <ModuleInfo>                                                                                                                                                                                                                
+                <Name TextId="256 Bytes Input" />                                                                                                                                                                                                                
+                <InfoText TextId="256 Bytes Input submodule" />                                                                                                                                                                                                                
+              </ModuleInfo>                                                                                                                                                                                                                
+            </VirtualSubmoduleItem>                                                                                                                                                                                                                
+          </VirtualSubmoduleList>                                                                                                                                                                                                                
+        </ModuleItem>   		
+        <!-- Output modulee -->                                                                                                                                                                                                                
+        <ModuleItem ID="1 Byte Output" ModuleIdentNumber="0x00000003">
+          <ModuleInfo CategoryRef="Output module">
+            <Name TextId="1 Byte Output" />
+            <InfoText TextId="1 Byte Output module" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="2" SubmoduleIdentNumber="0x00000002" MayIssueProcessAlarm="true">
+              <IOData>
+                <Output>
+                  <DataItem DataType="OctetString" Length="1" TextId="Outputs" />
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="1 Byte Output" />
+                <InfoText TextId="1 Byte Output submodule" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="2 Bytes Output" ModuleIdentNumber="0x00000005">
+          <ModuleInfo CategoryRef="Output module">
+            <Name TextId="2 Bytes Output" />
+            <InfoText TextId="2 Bytes Output module" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="4" SubmoduleIdentNumber="0x00000004" MayIssueProcessAlarm="true">
+              <IOData>
+                <Output>
+                  <DataItem DataType="OctetString" Length="2" TextId="Outputs" />
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="2 Bytes Output" />
+                <InfoText TextId="2 Bytes Output submodule" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="3 Bytes Output" ModuleIdentNumber="0x00000007">
+          <ModuleInfo CategoryRef="Output module">
+            <Name TextId="3 Bytes Output" />
+            <InfoText TextId="3 Bytes Output module" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="6" SubmoduleIdentNumber="0x00000006" MayIssueProcessAlarm="true">
+              <IOData>
+                <Output>
+                  <DataItem DataType="OctetString" Length="3" TextId="Outputs" />
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="3 Bytes Output" />
+                <InfoText TextId="3 Bytes Output submodule" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="4 Bytes Output" ModuleIdentNumber="0x00000009">
+          <ModuleInfo CategoryRef="Output module">
+            <Name TextId="4 Bytes Output" />
+            <InfoText TextId="4 Bytes Output module" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="8" SubmoduleIdentNumber="0x00000008" MayIssueProcessAlarm="true">
+              <IOData>
+                <Output>
+                  <DataItem DataType="OctetString" Length="4" TextId="Outputs" />
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="4 Bytes Output" />
+                <InfoText TextId="4 Bytes Output submodule" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="8 Bytes Output" ModuleIdentNumber="0x0000000B">
+          <ModuleInfo CategoryRef="Output module">
+            <Name TextId="8 Bytes Output" />
+            <InfoText TextId="8 Bytes Output module" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="10" SubmoduleIdentNumber="0x0000000A" MayIssueProcessAlarm="true">
+              <IOData>
+                <Output>
+                  <DataItem DataType="OctetString" Length="8" TextId="Outputs" />
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="8 Bytes Output" />
+                <InfoText TextId="8 Bytes Output submodule" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="12 Bytes Output" ModuleIdentNumber="0x0000000D">
+          <ModuleInfo CategoryRef="Output module">
+            <Name TextId="12 Bytes Output" />
+            <InfoText TextId="12 Bytes Output module" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="12" SubmoduleIdentNumber="0x0000000C" MayIssueProcessAlarm="true">
+              <IOData>
+                <Output>
+                  <DataItem DataType="OctetString" Length="12" TextId="Outputs" />
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="12 Bytes Output" />
+                <InfoText TextId="12 Bytes Output submodule" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="16 Bytes Output" ModuleIdentNumber="0x0000000F">
+          <ModuleInfo CategoryRef="Output module">
+            <Name TextId="16 Bytes Output" />
+            <InfoText TextId="16 Bytes Output module" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="14" SubmoduleIdentNumber="0x0000000E" MayIssueProcessAlarm="true">
+              <IOData>
+                <Output>
+                  <DataItem DataType="OctetString" Length="16" TextId="Outputs" />
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="16 Bytes Output" />
+                <InfoText TextId="16 Bytes Output submodule" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="20 Bytes Output" ModuleIdentNumber="0x00000011">
+          <ModuleInfo CategoryRef="Output module">
+            <Name TextId="20 Bytes Output" />
+            <InfoText TextId="20 Bytes Output module" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="16" SubmoduleIdentNumber="0x00000010" MayIssueProcessAlarm="true">
+              <IOData>
+                <Output>
+                  <DataItem DataType="OctetString" Length="20" TextId="Outputs" />
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="20 Bytes Output" />
+                <InfoText TextId="20 Bytes Output submodule" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="32 Bytes Output" ModuleIdentNumber="0x00000013">
+          <ModuleInfo CategoryRef="Output module">
+            <Name TextId="32 Bytes Output" />
+            <InfoText TextId="32 Bytes Output module" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="18" SubmoduleIdentNumber="0x00000012" MayIssueProcessAlarm="true">
+              <IOData>
+                <Output>
+                  <DataItem DataType="OctetString" Length="32" TextId="Outputs" />
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="32 Bytes Output" />
+                <InfoText TextId="32 Bytes Output submodule" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="64 Bytes Output" ModuleIdentNumber="0x00000015">
+          <ModuleInfo CategoryRef="Output module">
+            <Name TextId="64 Bytes Output" />
+            <InfoText TextId="64 Bytes Output module" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="20" SubmoduleIdentNumber="0x00000014" MayIssueProcessAlarm="true">
+              <IOData>
+                <Output>
+                  <DataItem DataType="OctetString" Length="64" TextId="Outputs" />
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="64 Bytes Output" />
+                <InfoText TextId="64 Bytes Output submodule" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+		<ModuleItem ID="256 Bytes Output" ModuleIdentNumber="0x000000BC">                                                                                                                                                                                                                
+          <ModuleInfo CategoryRef="Output module">                                                                                                                                                                                                                
+            <Name TextId="256 Bytes Output" />                                                                                                                                                                                                                
+            <InfoText TextId="256 Bytes Output module" />                                                                                                                                                                                                                
+          </ModuleInfo>                                                                                                                                                                                                                
+          <VirtualSubmoduleList>                                                                                                                                                                                                                
+            <VirtualSubmoduleItem ID="24" SubmoduleIdentNumber="0x000000BB" MayIssueProcessAlarm="true">                                                                                                                                                                                                                
+              <IOData>                                                                                                                                                                                                                
+                <Output>                                                                                                                                                                                                                
+                  <DataItem DataType="OctetString" Length="256" TextId="Outputs" />                                                                                                                                                                                                                
+                </Output>                                                                                                                                                                                                                
+              </IOData>                                                                                                                                                                                                                
+              <ModuleInfo>                                                                                                                                                                                                                
+                <Name TextId="256 Bytes Output" />                                                                                                                                                                                                                
+                <InfoText TextId="256 Bytes Output submodule" />                                                                                                                                                                                                                
+              </ModuleInfo>                                                                                                                                                                                                                
+            </VirtualSubmoduleItem>                                                                                                                                                                                                                
+          </VirtualSubmoduleList>                                                                                                                                                                                                                
+        </ModuleItem>  		
+        <!-- Safety-Modules -->                                                                                                                                                                                                                
+        <ModuleItem ID="Safety Profile" ModuleIdentNumber="0x00000016">
+          <ModuleInfo CategoryRef="Safety Module">
+            <Name TextId="IDT_NAME_SafetyModule" />
+            <InfoText TextId="IDT_INFOTEXT_SafetyModule" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="21" SubmoduleIdentNumber="0x00000015" PROFIsafeSupported="true" MayIssueProcessAlarm="true">
+              <IOData F_IO_StructureDescVersion="1" F_IO_StructureDescCRC="29691">
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="IDT_DI_Byte0">
+                    <BitDataItem BitOffset="0" TextId="IDT_DI_Ch0" />
+                    <BitDataItem BitOffset="1" TextId="IDT_DI_Ch1" />
+                    <BitDataItem BitOffset="2" TextId="IDT_DI_Ch2" />
+                    <BitDataItem BitOffset="3" TextId="IDT_DI_Ch3" />
+                    <BitDataItem BitOffset="4" TextId="IDT_DI_Ch4" />
+                    <BitDataItem BitOffset="5" TextId="IDT_DI_Ch5" />
+                    <BitDataItem BitOffset="6" TextId="IDT_DI_Ch6" />
+                    <BitDataItem BitOffset="7" TextId="IDT_DI_Ch7" />
+                  </DataItem>
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="IDT_DI_Byte1">
+                    <BitDataItem BitOffset="0" TextId="IDT_DI_Ch8" />
+                    <BitDataItem BitOffset="1" TextId="IDT_DI_Ch9" />
+                    <BitDataItem BitOffset="2" TextId="IDT_DI_Ch10" />
+                    <BitDataItem BitOffset="3" TextId="IDT_DI_Ch11" />
+                    <BitDataItem BitOffset="4" TextId="IDT_DI_Ch12" />
+                    <BitDataItem BitOffset="5" TextId="IDT_DI_Ch13" />
+                    <BitDataItem BitOffset="6" TextId="IDT_DI_Ch14" />
+                    <BitDataItem BitOffset="7" TextId="IDT_DI_Ch15" />
+                  </DataItem>
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="IDT_DI_Byte2">
+                    <BitDataItem BitOffset="0" TextId="IDT_DI_Ch16" />
+                    <BitDataItem BitOffset="1" TextId="IDT_DI_Ch17" />
+                    <BitDataItem BitOffset="2" TextId="IDT_DI_Ch18" />
+                    <BitDataItem BitOffset="3" TextId="IDT_DI_Ch19" />
+                    <BitDataItem BitOffset="4" TextId="IDT_DI_Ch20" />
+                    <BitDataItem BitOffset="5" TextId="IDT_DI_Ch21" />
+                    <BitDataItem BitOffset="6" TextId="IDT_DI_Ch22" />
+                    <BitDataItem BitOffset="7" TextId="IDT_DI_Ch23" />
+                  </DataItem>
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="IDT_DI_Byte3">
+                    <BitDataItem BitOffset="0" TextId="IDT_DI_Ch24" />
+                    <BitDataItem BitOffset="1" TextId="IDT_DI_Ch25" />
+                    <BitDataItem BitOffset="2" TextId="IDT_DI_Ch26" />
+                    <BitDataItem BitOffset="3" TextId="IDT_DI_Ch27" />
+                    <BitDataItem BitOffset="4" TextId="IDT_DI_Ch28" />
+                    <BitDataItem BitOffset="5" TextId="IDT_DI_Ch29" />
+                    <BitDataItem BitOffset="6" TextId="IDT_DI_Ch30" />
+                    <BitDataItem BitOffset="7" TextId="IDT_DI_Ch31" />
+                  </DataItem>
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="IDT_DI_Byte4">
+                    <BitDataItem BitOffset="0" TextId="IDT_DI_Ch32" />
+                    <BitDataItem BitOffset="1" TextId="IDT_DI_Ch33" />
+                    <BitDataItem BitOffset="2" TextId="IDT_DI_Ch34" />
+                    <BitDataItem BitOffset="3" TextId="IDT_DI_Ch35" />
+                    <BitDataItem BitOffset="4" TextId="IDT_DI_Ch36" />
+                    <BitDataItem BitOffset="5" TextId="IDT_DI_Ch37" />
+                    <BitDataItem BitOffset="6" TextId="IDT_DI_Ch38" />
+                    <BitDataItem BitOffset="7" TextId="IDT_DI_Ch39" />
+                  </DataItem>
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="IDT_DI_Byte5">
+                    <BitDataItem BitOffset="0" TextId="IDT_DI_Ch40" />
+                    <BitDataItem BitOffset="1" TextId="IDT_DI_Ch41" />
+                    <BitDataItem BitOffset="2" TextId="IDT_DI_Ch42" />
+                    <BitDataItem BitOffset="3" TextId="IDT_DI_Ch43" />
+                    <BitDataItem BitOffset="4" TextId="IDT_DI_Ch44" />
+                    <BitDataItem BitOffset="5" TextId="IDT_DI_Ch45" />
+                    <BitDataItem BitOffset="6" TextId="IDT_DI_Ch46" />
+                    <BitDataItem BitOffset="7" TextId="IDT_DI_Ch47" />
+                  </DataItem>
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="IDT_DI_Byte6">
+                    <BitDataItem BitOffset="0" TextId="IDT_DI_Ch48" />
+                    <BitDataItem BitOffset="1" TextId="IDT_DI_Ch49" />
+                    <BitDataItem BitOffset="2" TextId="IDT_DI_Ch50" />
+                    <BitDataItem BitOffset="3" TextId="IDT_DI_Ch51" />
+                    <BitDataItem BitOffset="4" TextId="IDT_DI_Ch52" />
+                    <BitDataItem BitOffset="5" TextId="IDT_DI_Ch53" />
+                    <BitDataItem BitOffset="6" TextId="IDT_DI_Ch54" />
+                    <BitDataItem BitOffset="7" TextId="IDT_DI_Ch55" />
+                  </DataItem>
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="IDT_DI_Byte7">
+                    <BitDataItem BitOffset="0" TextId="IDT_DI_Ch56" />
+                    <BitDataItem BitOffset="1" TextId="IDT_DI_Ch57" />
+                    <BitDataItem BitOffset="2" TextId="IDT_DI_Ch58" />
+                    <BitDataItem BitOffset="3" TextId="IDT_DI_Ch59" />
+                    <BitDataItem BitOffset="4" TextId="IDT_DI_Ch60" />
+                    <BitDataItem BitOffset="5" TextId="IDT_DI_Ch61" />
+                    <BitDataItem BitOffset="6" TextId="IDT_DI_Ch62" />
+                    <BitDataItem BitOffset="7" TextId="IDT_DI_Ch63" />
+                  </DataItem>
+                  <DataItem DataType="Integer16" TextId="IDT_DI_Byte8_9" />
+                  <DataItem DataType="Integer16" TextId="IDT_DI_Byte10_11" />
+                  <DataItem DataType="F_MessageTrailer4Byte" TextId="IDT_DATAITEM_PS_Safety" />
+                </Input>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="IDT_DO_Byte0">
+                    <BitDataItem BitOffset="0" TextId="IDT_DO_Ch0" />
+                    <BitDataItem BitOffset="1" TextId="IDT_DO_Ch1" />
+                    <BitDataItem BitOffset="2" TextId="IDT_DO_Ch2" />
+                    <BitDataItem BitOffset="3" TextId="IDT_DO_Ch3" />
+                    <BitDataItem BitOffset="4" TextId="IDT_DO_Ch4" />
+                    <BitDataItem BitOffset="5" TextId="IDT_DO_Ch5" />
+                    <BitDataItem BitOffset="6" TextId="IDT_DO_Ch6" />
+                    <BitDataItem BitOffset="7" TextId="IDT_DO_Ch7" />
+                  </DataItem>
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="IDT_DO_Byte1">
+                    <BitDataItem BitOffset="0" TextId="IDT_DO_Ch8" />
+                    <BitDataItem BitOffset="1" TextId="IDT_DO_Ch9" />
+                    <BitDataItem BitOffset="2" TextId="IDT_DO_Ch10" />
+                    <BitDataItem BitOffset="3" TextId="IDT_DO_Ch11" />
+                    <BitDataItem BitOffset="4" TextId="IDT_DO_Ch12" />
+                    <BitDataItem BitOffset="5" TextId="IDT_DO_Ch13" />
+                    <BitDataItem BitOffset="6" TextId="IDT_DO_Ch14" />
+                    <BitDataItem BitOffset="7" TextId="IDT_DO_Ch15" />
+                  </DataItem>
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="IDT_DO_Byte2">
+                    <BitDataItem BitOffset="0" TextId="IDT_DO_Ch16" />
+                    <BitDataItem BitOffset="1" TextId="IDT_DO_Ch17" />
+                    <BitDataItem BitOffset="2" TextId="IDT_DO_Ch18" />
+                    <BitDataItem BitOffset="3" TextId="IDT_DO_Ch19" />
+                    <BitDataItem BitOffset="4" TextId="IDT_DO_Ch20" />
+                    <BitDataItem BitOffset="5" TextId="IDT_DO_Ch21" />
+                    <BitDataItem BitOffset="6" TextId="IDT_DO_Ch22" />
+                    <BitDataItem BitOffset="7" TextId="IDT_DO_Ch23" />
+                  </DataItem>
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="IDT_DO_Byte3">
+                    <BitDataItem BitOffset="0" TextId="IDT_DO_Ch24" />
+                    <BitDataItem BitOffset="1" TextId="IDT_DO_Ch25" />
+                    <BitDataItem BitOffset="2" TextId="IDT_DO_Ch26" />
+                    <BitDataItem BitOffset="3" TextId="IDT_DO_Ch27" />
+                    <BitDataItem BitOffset="4" TextId="IDT_DO_Ch28" />
+                    <BitDataItem BitOffset="5" TextId="IDT_DO_Ch29" />
+                    <BitDataItem BitOffset="6" TextId="IDT_DO_Ch30" />
+                    <BitDataItem BitOffset="7" TextId="IDT_DO_Ch31" />
+                  </DataItem>
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="IDT_DO_Byte4">
+                    <BitDataItem BitOffset="0" TextId="IDT_DO_Ch32" />
+                    <BitDataItem BitOffset="1" TextId="IDT_DO_Ch33" />
+                    <BitDataItem BitOffset="2" TextId="IDT_DO_Ch34" />
+                    <BitDataItem BitOffset="3" TextId="IDT_DO_Ch35" />
+                    <BitDataItem BitOffset="4" TextId="IDT_DO_Ch36" />
+                    <BitDataItem BitOffset="5" TextId="IDT_DO_Ch37" />
+                    <BitDataItem BitOffset="6" TextId="IDT_DO_Ch38" />
+                    <BitDataItem BitOffset="7" TextId="IDT_DO_Ch39" />
+                  </DataItem>
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="IDT_DO_Byte5">
+                    <BitDataItem BitOffset="0" TextId="IDT_DO_Ch40" />
+                    <BitDataItem BitOffset="1" TextId="IDT_DO_Ch41" />
+                    <BitDataItem BitOffset="2" TextId="IDT_DO_Ch42" />
+                    <BitDataItem BitOffset="3" TextId="IDT_DO_Ch43" />
+                    <BitDataItem BitOffset="4" TextId="IDT_DO_Ch44" />
+                    <BitDataItem BitOffset="5" TextId="IDT_DO_Ch45" />
+                    <BitDataItem BitOffset="6" TextId="IDT_DO_Ch46" />
+                    <BitDataItem BitOffset="7" TextId="IDT_DO_Ch47" />
+                  </DataItem>
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="IDT_DO_Byte6">
+                    <BitDataItem BitOffset="0" TextId="IDT_DO_Ch48" />
+                    <BitDataItem BitOffset="1" TextId="IDT_DO_Ch49" />
+                    <BitDataItem BitOffset="2" TextId="IDT_DO_Ch50" />
+                    <BitDataItem BitOffset="3" TextId="IDT_DO_Ch51" />
+                    <BitDataItem BitOffset="4" TextId="IDT_DO_Ch52" />
+                    <BitDataItem BitOffset="5" TextId="IDT_DO_Ch53" />
+                    <BitDataItem BitOffset="6" TextId="IDT_DO_Ch54" />
+                    <BitDataItem BitOffset="7" TextId="IDT_DO_Ch55" />
+                  </DataItem>
+                  <DataItem DataType="Unsigned8" UseAsBits="true" TextId="IDT_DO_Byte7">
+                    <BitDataItem BitOffset="0" TextId="IDT_DO_Ch56" />
+                    <BitDataItem BitOffset="1" TextId="IDT_DO_Ch57" />
+                    <BitDataItem BitOffset="2" TextId="IDT_DO_Ch58" />
+                    <BitDataItem BitOffset="3" TextId="IDT_DO_Ch59" />
+                    <BitDataItem BitOffset="4" TextId="IDT_DO_Ch60" />
+                    <BitDataItem BitOffset="5" TextId="IDT_DO_Ch61" />
+                    <BitDataItem BitOffset="6" TextId="IDT_DO_Ch62" />
+                    <BitDataItem BitOffset="7" TextId="IDT_DO_Ch63" />
+                  </DataItem>
+                  <DataItem DataType="Integer16" TextId="IDT_DO_Byte8_9" />
+                  <DataItem DataType="Integer16" TextId="IDT_DO_Byte10_11" />
+                  <DataItem DataType="F_MessageTrailer4Byte" TextId="IDT_DATAITEM_PS_Safety" />
+                </Output>
+              </IOData>
+              <RecordDataList>
+                <F_ParameterRecordDataItem F_ParamDescCRC="26663" Index="1">
+                  <F_Check_iPar />
+                  <F_SIL AllowedValues="SIL1 SIL2 SIL3" />
+                  <F_CRC_Length />
+                  <F_Block_ID />
+                  <F_Par_Version Changeable="false" Visible="true" />
+                  <F_Source_Add />
+                  <F_Dest_Add />
+                  <F_WD_Time AllowedValues="150..2000" />
+                  <F_Par_CRC DefaultValue="48021" AllowedValues="0..65535" />
+                </F_ParameterRecordDataItem>
+              </RecordDataList>
+              <ModuleInfo>
+                <Name TextId="IDT_NAME_SafetyModule" />
+                <InfoText TextId="IDT_INFOTEXT_SafetySubmodule" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+      </ModuleList>
+      <CategoryList>
+        <CategoryItem ID="Input Module" TextId="Input Module" />
+        <CategoryItem ID="Output module" TextId="Output module" />
+        <CategoryItem ID="DAP Module" TextId="DAP Module" />
+        <CategoryItem ID="Safety Module" TextId="Safety Module" />
+      </CategoryList>
+      <ExternalTextList>
+        <PrimaryLanguage>
+          <Text TextId="DeviceDescription" Value="CS9 ProfiNet IO-Device." />
+          <Text TextId="ID_NAME_DIM1" Value="CS9" />
+          <Text TextId="DIM1_Infotext" Value="CS9 Onboard Ethernet-RT interface J207/J208" />
+          <!--Baugruppeneinteilung-->
+          <Text TextId="Input Module" Value="Input modules" />
+          <Text TextId="Output module" Value="Output modules" />
+          <Text TextId="DAP Module" Value="DAP modules" />
+          <Text TextId="Safety Module" Value="Safety controller module" />
+          <!-- DAP-Module -->
+          <Text TextId="DAP v5.0" Value="DAP v2.0" />
+          <Text TextId="DAP1_Infotext" Value="Supports RT communication." />
+          <!--Eingangsmodule-->
+          <Text TextId="1 Byte Input" Value="1 Byte Input" />
+          <Text TextId="1 Byte Input module" Value="1 Byte Input module" />
+          <Text TextId="1 Byte Input submodule" Value="1 Byte Input submodule" />
+          <Text TextId="2 Bytes Input" Value="2 Bytes Input" />
+          <Text TextId="2 Bytes Input module" Value="2 Bytes Input module" />
+          <Text TextId="2 Bytes Input submodule" Value="2 Bytes Input submodule" />
+          <Text TextId="3 Bytes Input" Value="3 Bytes Input" />
+          <Text TextId="3 Bytes Input module" Value="3 Bytes Input module" />
+          <Text TextId="3 Bytes Input submodule" Value="3 Bytes Input submodule" />
+          <Text TextId="4 Bytes Input" Value="4 Bytes Input" />
+          <Text TextId="4 Bytes Input module" Value="4 Bytes Input module" />
+          <Text TextId="4 Bytes Input submodule" Value="4 Bytes Input submodule" />
+          <Text TextId="8 Bytes Input" Value="8 Bytes Input" />
+          <Text TextId="8 Bytes Input module" Value="8 Bytes Input module" />
+          <Text TextId="8 Bytes Input submodule" Value="8 Bytes Input submodule" />
+          <Text TextId="12 Bytes Input" Value="12 Bytes Input" />
+          <Text TextId="12 Bytes Input module" Value="12 Bytes Input module" />
+          <Text TextId="12 Bytes Input submodule" Value="12 Bytes Input submodule" />
+          <Text TextId="16 Bytes Input" Value="16 Bytes Input" />
+          <Text TextId="16 Bytes Input module" Value="16 Bytes Input module" />
+          <Text TextId="16 Bytes Input submodule" Value="16 Bytes Input submodule" />
+          <Text TextId="20 Bytes Input" Value="20 Bytes Input" />
+          <Text TextId="20 Bytes Input module" Value="20 Bytes Input module" />
+          <Text TextId="20 Bytes Input submodule" Value="20 Bytes Input submodule" />
+          <Text TextId="32 Bytes Input" Value="32 Bytes Input" />
+          <Text TextId="32 Bytes Input module" Value="32 Bytes Input module" />
+          <Text TextId="32 Bytes Input submodule" Value="32 Bytes Input submodule" />
+          <Text TextId="64 Bytes Input" Value="64 Bytes Input" />
+          <Text TextId="64 Bytes Input module" Value="64 Bytes Input module" />
+          <Text TextId="64 Bytes Input submodule" Value="64 Bytes Input submodule" />
+          <Text TextId="256 Bytes Input" Value="256 Bytes Input" />                                                                                                                                                                                                                
+          <Text TextId="256 Bytes Input module" Value="256 Bytes Input module" />                                                                                                                                                                                                                
+          <Text TextId="256 Bytes Input submodule" Value="256 Bytes Input submodule" /> 		  
+          <Text TextId="Inputs" Value="Inputs" />
+          <!--Output module-->
+          <Text TextId="1 Byte Output" Value="1 Byte Output" />
+          <Text TextId="1 Byte Output module" Value="1 Byte Output module" />
+          <Text TextId="1 Byte Output submodule" Value="1 Byte Output submodule" />
+          <Text TextId="2 Bytes Output" Value="2 Bytes Output" />
+          <Text TextId="2 Bytes Output module" Value="2 Bytes Output module" />
+          <Text TextId="2 Bytes Output submodule" Value="2 Bytes Output submodule" />
+          <Text TextId="3 Bytes Output" Value="3 Bytes Output" />
+          <Text TextId="3 Bytes Output module" Value="3 Bytes Output module" />
+          <Text TextId="3 Bytes Output submodule" Value="3 Bytes Output submodule" />
+          <Text TextId="4 Bytes Output" Value="4 Bytes Output" />
+          <Text TextId="4 Bytes Output module" Value="4 Bytes Output module" />
+          <Text TextId="4 Bytes Output submodule" Value="4 Bytes Output submodule" />
+          <Text TextId="8 Bytes Output" Value="8 Bytes Output" />
+          <Text TextId="8 Bytes Output module" Value="8 Bytes Output module" />
+          <Text TextId="8 Bytes Output submodule" Value="8 Bytes Output submodule" />
+          <Text TextId="12 Bytes Output" Value="12 Bytes Output" />
+          <Text TextId="12 Bytes Output module" Value="12 Bytes Output module" />
+          <Text TextId="12 Bytes Output submodule" Value="12 Bytes Output submodule" />
+          <Text TextId="16 Bytes Output" Value="16 Bytes Output" />
+          <Text TextId="16 Bytes Output module" Value="16 Bytes Output module" />
+          <Text TextId="16 Bytes Output submodule" Value="16 Bytes Output submodule" />
+          <Text TextId="20 Bytes Output" Value="20 Bytes Output" />
+          <Text TextId="20 Bytes Output module" Value="20 Bytes Output module" />
+          <Text TextId="20 Bytes Output submodule" Value="20 Bytes Output submodule" />
+          <Text TextId="32 Bytes Output" Value="32 Bytes Output" />
+          <Text TextId="32 Bytes Output module" Value="32 Bytes Output module" />
+          <Text TextId="32 Bytes Output submodule" Value="32 Bytes Output submodule" />
+          <Text TextId="64 Bytes Output" Value="64 Bytes Output" />
+          <Text TextId="64 Bytes Output module" Value="64 Bytes Output module" />
+          <Text TextId="64 Bytes Output submodule" Value="64 Bytes Output submodule" />
+          <Text TextId="256 Bytes Output" Value="256 Bytes Output" />                                                                                                                                                                                                                
+          <Text TextId="256 Bytes Output module" Value="256 Bytes Output module" />                                                                                                                                                                                                                
+          <Text TextId="256 Bytes Output submodule" Value="256 Bytes Output submodule" /> 		  
+          <Text TextId="Outputs" Value="Outputs" />
+          <!--Submodule-->
+          <Text TextId="X1" Value="Ethernet RT" />
+          <Text TextId="X1P1" Value="J207" />
+          <Text TextId="X1P2" Value="J208" />
+          <Text TextId="PN-IO" Value="PN-IO" />
+          <Text TextId="Port1" Value="J207" />
+          <Text TextId="Port2" Value="J208" />
+          <!--Safety-->
+          <Text TextId="IDT_NAME_SafetyModule" Value="Safety controller module" />
+          <Text TextId="IDT_INFOTEXT_SafetyModule" Value="Safety controller module" />
+          <Text TextId="IDT_INFOTEXT_SafetySubmodule" Value="Safety controller submodule" />
+          <Text TextId="IDT_DATAITEM_PS_Safety" Value="Safety data message trailer" />
+          <Text TextId="IDT_DI_Byte0" Value="Safety Digital Input Byte 0" />
+          <Text TextId="IDT_DI_Ch0" Value="manualSlow" />
+          <Text TextId="IDT_DI_Ch1" Value="manualFast" />
+          <Text TextId="IDT_DI_Ch2" Value="autoLocal" />
+          <Text TextId="IDT_DI_Ch3" Value="autoRemote" />
+          <Text TextId="IDT_DI_Ch4" Value="reserved" />
+          <Text TextId="IDT_DI_Ch5" Value="reserved" />
+          <Text TextId="IDT_DI_Ch6" Value="reserved" />
+          <Text TextId="IDT_DI_Ch7" Value="reserved" />
+          <Text TextId="IDT_DI_Byte1" Value="Safety Digital Input Byte 1" />
+          <Text TextId="IDT_DI_Ch8" Value="ss1Ctrl" />
+          <Text TextId="IDT_DI_Ch9" Value="enablingDeviceCtrl" />
+          <Text TextId="IDT_DI_Ch10" Value="ss2Ctrl" />
+          <Text TextId="IDT_DI_Ch11" Value="reserved" />
+          <Text TextId="IDT_DI_Ch12" Value="restartAck" />
+          <Text TextId="IDT_DI_Ch13" Value="referencing" />
+          <Text TextId="IDT_DI_Ch14" Value="reserved" />
+          <Text TextId="IDT_DI_Ch15" Value="reserved" />
+          <Text TextId="IDT_DI_Byte2" Value="Safety Digital Input Byte 2" />
+          <Text TextId="IDT_DI_Ch16" Value="reserved" />
+          <Text TextId="IDT_DI_Ch17" Value="reserved" />
+          <Text TextId="IDT_DI_Ch18" Value="reserved" />
+          <Text TextId="IDT_DI_Ch19" Value="reserved" />
+          <Text TextId="IDT_DI_Ch20" Value="reserved" />
+          <Text TextId="IDT_DI_Ch21" Value="reserved" />
+          <Text TextId="IDT_DI_Ch22" Value="reserved" />
+          <Text TextId="IDT_DI_Ch23" Value="reserved" />
+          <Text TextId="IDT_DI_Byte3" Value="Safety Digital Input Byte 3" />
+          <Text TextId="IDT_DI_Ch24" Value="monitoringA" />
+          <Text TextId="IDT_DI_Ch25" Value="monitoringB" />
+          <Text TextId="IDT_DI_Ch26" Value="monitoringC" />
+          <Text TextId="IDT_DI_Ch27" Value="monitoringD" />
+          <Text TextId="IDT_DI_Ch28" Value="reserved" />
+          <Text TextId="IDT_DI_Ch29" Value="reserved" />
+          <Text TextId="IDT_DI_Ch30" Value="reserved" />
+          <Text TextId="IDT_DI_Ch31" Value="reserved" />
+          <Text TextId="IDT_DI_Byte4" Value="Safety Digital Input Byte 4" />
+          <Text TextId="IDT_DI_Ch32" Value="reserved" />
+          <Text TextId="IDT_DI_Ch33" Value="reserved" />
+          <Text TextId="IDT_DI_Ch34" Value="reserved" />
+          <Text TextId="IDT_DI_Ch35" Value="reserved" />
+          <Text TextId="IDT_DI_Ch36" Value="reserved" />
+          <Text TextId="IDT_DI_Ch37" Value="reserved" />
+          <Text TextId="IDT_DI_Ch38" Value="reserved" />
+          <Text TextId="IDT_DI_Ch39" Value="reserved" />
+          <Text TextId="IDT_DI_Byte5" Value="Safety Digital Input Byte 5" />
+          <Text TextId="IDT_DI_Ch40" Value="reserved" />
+          <Text TextId="IDT_DI_Ch41" Value="reserved" />
+          <Text TextId="IDT_DI_Ch42" Value="reserved" />
+          <Text TextId="IDT_DI_Ch43" Value="reserved" />
+          <Text TextId="IDT_DI_Ch44" Value="reserved" />
+          <Text TextId="IDT_DI_Ch45" Value="reserved" />
+          <Text TextId="IDT_DI_Ch46" Value="reserved" />
+          <Text TextId="IDT_DI_Ch47" Value="reserved" />
+          <Text TextId="IDT_DI_Byte6" Value="Safety Digital Input Byte 6" />
+          <Text TextId="IDT_DI_Ch48" Value="reserved" />
+          <Text TextId="IDT_DI_Ch49" Value="reserved" />
+          <Text TextId="IDT_DI_Ch50" Value="reserved" />
+          <Text TextId="IDT_DI_Ch51" Value="reserved" />
+          <Text TextId="IDT_DI_Ch52" Value="reserved" />
+          <Text TextId="IDT_DI_Ch53" Value="reserved" />
+          <Text TextId="IDT_DI_Ch54" Value="reserved" />
+          <Text TextId="IDT_DI_Ch55" Value="reserved" />
+          <Text TextId="IDT_DI_Byte7" Value="Safety Digital Input Byte 7" />
+          <Text TextId="IDT_DI_Ch56" Value="reserved" />
+          <Text TextId="IDT_DI_Ch57" Value="reserved" />
+          <Text TextId="IDT_DI_Ch58" Value="reserved" />
+          <Text TextId="IDT_DI_Ch59" Value="reserved" />
+          <Text TextId="IDT_DI_Ch60" Value="reserved" />
+          <Text TextId="IDT_DI_Ch61" Value="reserved" />
+          <Text TextId="IDT_DI_Ch62" Value="reserved" />
+          <Text TextId="IDT_DI_Ch63" Value="reserved" />
+          <Text TextId="IDT_DI_Byte8_9" Value="reserved" />
+          <Text TextId="IDT_DI_Byte10_11" Value="reserved" />
+          <Text TextId="IDT_DO_Byte0" Value="Safety Digital Output Byte 0" />
+          <Text TextId="IDT_DO_Ch0" Value="manualSlow" />
+          <Text TextId="IDT_DO_Ch1" Value="manualFast" />
+          <Text TextId="IDT_DO_Ch2" Value="autoLocal" />
+          <Text TextId="IDT_DO_Ch3" Value="autoRemote" />
+          <Text TextId="IDT_DO_Ch4" Value="maintenanceMode" />
+          <Text TextId="IDT_DO_Ch5" Value="reducedSafety" />
+          <Text TextId="IDT_DO_Ch6" Value="reserved" />
+          <Text TextId="IDT_DO_Ch7" Value="reserved" />
+          <Text TextId="IDT_DO_Byte1" Value="Safety Digital Output Byte 1" />
+          <Text TextId="IDT_DO_Ch8" Value="reserved" />
+          <Text TextId="IDT_DO_Ch9" Value="reserved" />
+          <Text TextId="IDT_DO_Ch10" Value="reserved" />
+          <Text TextId="IDT_DO_Ch11" Value="reserved" />
+          <Text TextId="IDT_DO_Ch12" Value="reserved" />
+          <Text TextId="IDT_DO_Ch13" Value="reserved" />
+          <Text TextId="IDT_DO_Ch14" Value="reserved" />
+          <Text TextId="IDT_DO_Ch15" Value="reserved" />
+          <Text TextId="IDT_DO_Byte2" Value="Safety Digital Output Byte 2" />
+          <Text TextId="IDT_DO_Ch16" Value="safeState" />
+          <Text TextId="IDT_DO_Ch17" Value="armPower" />
+          <Text TextId="IDT_DO_Ch18" Value="fastSpeed" />
+          <Text TextId="IDT_DO_Ch19" Value="sosState" />
+          <Text TextId="IDT_DO_Ch20" Value="ss2State" />
+          <Text TextId="IDT_DO_Ch21" Value="ss1State" />
+          <Text TextId="IDT_DO_Ch22" Value="waitingRestartAck" />
+          <Text TextId="IDT_DO_Ch23" Value="restartAck" />
+          <Text TextId="IDT_DO_Byte3" Value="Safety Digital Output Byte 3" />
+          <Text TextId="IDT_DO_Ch24" Value="mcpRemoval" />
+          <Text TextId="IDT_DO_Ch25" Value="mcpPlug" />
+          <Text TextId="IDT_DO_Ch26" Value="mcpEnabling" />
+          <Text TextId="IDT_DO_Ch27" Value="mcpEstop" />
+          <Text TextId="IDT_DO_Ch28" Value="reserved" />
+          <Text TextId="IDT_DO_Ch29" Value="reserved" />
+          <Text TextId="IDT_DO_Ch30" Value="reserved" />
+          <Text TextId="IDT_DO_Ch31" Value="reserved" />
+          <Text TextId="IDT_DO_Byte4" Value="Safety Digital Output Byte 4" />
+          <Text TextId="IDT_DO_Ch32" Value="reserved" />
+          <Text TextId="IDT_DO_Ch33" Value="reserved" />
+          <Text TextId="IDT_DO_Ch34" Value="reserved" />
+          <Text TextId="IDT_DO_Ch35" Value="reserved" />
+          <Text TextId="IDT_DO_Ch36" Value="reserved" />
+          <Text TextId="IDT_DO_Ch37" Value="reserved" />
+          <Text TextId="IDT_DO_Ch38" Value="reserved" />
+          <Text TextId="IDT_DO_Ch39" Value="reserved" />
+          <Text TextId="IDT_DO_Byte5" Value="Safety Digital Output Byte 5" />
+          <Text TextId="IDT_DO_Ch40" Value="usiA" />
+          <Text TextId="IDT_DO_Ch41" Value="usiB" />
+          <Text TextId="IDT_DO_Ch42" Value="usiC" />
+          <Text TextId="IDT_DO_Ch43" Value="usiD" />
+          <Text TextId="IDT_DO_Ch44" Value="reserved" />
+          <Text TextId="IDT_DO_Ch45" Value="reserved" />
+          <Text TextId="IDT_DO_Ch46" Value="reserved" />
+          <Text TextId="IDT_DO_Ch47" Value="reserved" />
+          <Text TextId="IDT_DO_Byte6" Value="Safety Digital Output Byte 6" />
+          <Text TextId="IDT_DO_Ch48" Value="zone1" />
+          <Text TextId="IDT_DO_Ch49" Value="zone2" />
+          <Text TextId="IDT_DO_Ch50" Value="zone3" />
+          <Text TextId="IDT_DO_Ch51" Value="zone4" />
+          <Text TextId="IDT_DO_Ch52" Value="reserved" />
+          <Text TextId="IDT_DO_Ch53" Value="reserved" />
+          <Text TextId="IDT_DO_Ch54" Value="reserved" />
+          <Text TextId="IDT_DO_Ch55" Value="reserved" />
+          <Text TextId="IDT_DO_Byte7" Value="Safety Digital Output Byte 7" />
+          <Text TextId="IDT_DO_Ch56" Value="reserved" />
+          <Text TextId="IDT_DO_Ch57" Value="reserved" />
+          <Text TextId="IDT_DO_Ch58" Value="reserved" />
+          <Text TextId="IDT_DO_Ch59" Value="reserved" />
+          <Text TextId="IDT_DO_Ch60" Value="reserved" />
+          <Text TextId="IDT_DO_Ch61" Value="reserved" />
+          <Text TextId="IDT_DO_Ch62" Value="reserved" />
+          <Text TextId="IDT_DO_Ch63" Value="reserved" />
+          <Text TextId="IDT_DO_Byte8_9" Value="reserved" />
+          <Text TextId="IDT_DO_Byte10_11" Value="reserved" />
+        </PrimaryLanguage>
+      </ExternalTextList>
+    </ApplicationProcess>
+  </ProfileBody>
+</ISO15745Profile>

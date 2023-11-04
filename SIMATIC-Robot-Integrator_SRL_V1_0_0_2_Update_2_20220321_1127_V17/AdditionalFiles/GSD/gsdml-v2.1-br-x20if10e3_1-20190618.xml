@@ -1,0 +1,961 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<ISO15745Profile xmlns="http://www.profibus.com/GSDML/2003/11/DeviceProfile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.profibus.com/GSDML/2003/11/DeviceProfile ..\XSD\GSDML-DeviceProfile-v2.1.xsd">
+	<ProfileHeader>
+		<ProfileIdentification>PROFINET Device Profile</ProfileIdentification>
+		<ProfileRevision>1.00</ProfileRevision>
+		<ProfileName>Device Profile for PROFINET Devices</ProfileName>
+		<ProfileSource>PROFIBUS Nutzerorganisation e. V. (PNO)</ProfileSource>
+		<ProfileClassID>Device</ProfileClassID>
+		<ISO15745Reference>
+			<ISO15745Part>4</ISO15745Part>
+			<ISO15745Edition>1</ISO15745Edition>
+			<ProfileTechnology>GSDML</ProfileTechnology>
+		</ISO15745Reference>
+	</ProfileHeader>
+	<ProfileBody>
+		<DeviceIdentity VendorID="0x0377" DeviceID="0xA71E">
+			<InfoText TextId="DeviceDescription"/>
+			<VendorName Value="B&amp;R Industrie-Elektronik"/>
+		</DeviceIdentity>
+		<DeviceFunction>
+			<Family MainFamily="I/O" ProductFamily="PNS"/>
+		</DeviceFunction>
+		<ApplicationProcess>
+			<DeviceAccessPointList>
+				<DeviceAccessPointItem ID="DIM 1" PhysicalSlots="0..300" ModuleIdentNumber="0x00000001" MinDeviceInterval="32" ImplementationType="netX" DNS_CompatibleName="NETX100REPNS" FixedInSlots="0" ObjectUUID_LocalIndex="1">
+					<ModuleInfo>
+						<Name TextId="X20IF10E3-1"/>
+						<InfoText TextId="DeviceDescription"/>
+						<VendorName Value="B&amp;R Industrie-Elektronik"/>
+						<OrderNumber Value="X20IF10E3-1"/>
+						<HardwareRelease Value="1"/>
+						<SoftwareRelease Value="2.1.x"/>
+					</ModuleInfo>
+					<SubslotList>
+						<SubslotItem SubslotNumber="32768" TextId="Interface1"/>
+						<SubslotItem SubslotNumber="32769" TextId="Interface1Port1"/>
+						<SubslotItem SubslotNumber="32770" TextId="Interface1Port2"/>
+					</SubslotList>
+					<IOConfigData MaxInputLength="1024" MaxOutputLength="1024"/>
+					<UseableModules>
+						<ModuleItemRef ModuleItemTarget="9" AllowedInSlots="1..300"/>
+						<ModuleItemRef ModuleItemTarget="10" AllowedInSlots="1..300"/>
+						<ModuleItemRef ModuleItemTarget="13" AllowedInSlots="1..300"/>
+						<ModuleItemRef ModuleItemTarget="14" AllowedInSlots="1..300"/>
+						<ModuleItemRef ModuleItemTarget="17" AllowedInSlots="1..300"/>
+						<ModuleItemRef ModuleItemTarget="18" AllowedInSlots="1..300"/>
+						<ModuleItemRef ModuleItemTarget="19" AllowedInSlots="1..300"/>
+						<ModuleItemRef ModuleItemTarget="20" AllowedInSlots="1..300"/>
+						<ModuleItemRef ModuleItemTarget="21" AllowedInSlots="1..300"/>
+						<ModuleItemRef ModuleItemTarget="22" AllowedInSlots="1..300"/>
+						<ModuleItemRef ModuleItemTarget="23" AllowedInSlots="1..300"/>
+						<ModuleItemRef ModuleItemTarget="24" AllowedInSlots="1..300"/>
+						<!--Die Referenzen zeigen auf die Module der ModuleList -->
+					</UseableModules>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="DIM 1" SubmoduleIdentNumber="0x00000000">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+									</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+					<SystemDefinedSubmoduleList>
+						<InterfaceSubmoduleItem SupportedRT_Class="Class1" SupportedProtocols="SNMP;LLDP" SupportedMibs="MIB2" TextId="Interface1" SubslotNumber="32768" SubmoduleIdentNumber="0x00000001" >
+							<ApplicationRelations>
+								<TimingProperties SendClock="32"/>
+							</ApplicationRelations>
+						</InterfaceSubmoduleItem>
+						<PortSubmoduleItem SubslotNumber="32769" MAUType="100BASETXFD" TextId="Interface1Port1" SubmoduleIdentNumber="0x00000001"/>
+						<PortSubmoduleItem SubslotNumber="32770" MAUType="100BASETXFD" TextId="Interface1Port2" SubmoduleIdentNumber="0x00000001"/>
+					</SystemDefinedSubmoduleList>
+					<Graphics>
+						<GraphicItemRef Type="DeviceSymbol" GraphicItemTarget="1"/>
+					</Graphics>
+				</DeviceAccessPointItem>
+			</DeviceAccessPointList>
+			<ModuleList>
+
+				<!-- Eingabemodule -->
+				<ModuleItem ID="1" ModuleIdentNumber="0x00000002">
+					<ModuleInfo CategoryRef="Input Module">
+						<Name TextId="1 Byte In"/>
+						<InfoText TextId="1 Byte In"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="1" SubmoduleIdentNumber="0x00000001">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="OctetString" Length="1" TextId="Inputs"/>
+								</Input>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Ausgabemodule -->
+				<ModuleItem ID="2" ModuleIdentNumber="0x00000003">
+					<ModuleInfo CategoryRef="Output Module">
+						<Name TextId="1 Byte Out"/>
+						<InfoText TextId="1 Byte Out"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="2" SubmoduleIdentNumber="0x00000002">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="OctetString" Length="1" TextId="Outputs"/>
+								</Output>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Eingabemodule -->
+				<ModuleItem ID="3" ModuleIdentNumber="0x00000004">
+					<ModuleInfo CategoryRef="Input Module">
+						<Name TextId="2 Bytes In"/>
+						<InfoText TextId="2 Bytes In"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="3" SubmoduleIdentNumber="0x00000003">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="OctetString" Length="2" TextId="Inputs"/>
+								</Input>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Ausgabemodule -->
+				<ModuleItem ID="4" ModuleIdentNumber="0x00000005">
+					<ModuleInfo CategoryRef="Output Module">
+						<Name TextId="2 Bytes Out"/>
+						<InfoText TextId="2 Bytes Out"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="4" SubmoduleIdentNumber="0x00000004">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="OctetString" Length="2" TextId="Outputs"/>
+								</Output>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Eingabemodule -->
+				<ModuleItem ID="5" ModuleIdentNumber="0x00000006">
+					<ModuleInfo CategoryRef="Input Module">
+						<Name TextId="3 Bytes In"/>
+						<InfoText TextId="3 Bytes In"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="5" SubmoduleIdentNumber="0x00000005">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="OctetString" Length="3" TextId="Inputs"/>
+								</Input>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Ausgabemodule -->
+				<ModuleItem ID="6" ModuleIdentNumber="0x00000007">
+					<ModuleInfo CategoryRef="Output Module">
+						<Name TextId="3 Bytes Out"/>
+						<InfoText TextId="3 Bytes Out"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="6" SubmoduleIdentNumber="0x00000006">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="OctetString" Length="3" TextId="Outputs"/>
+								</Output>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Eingabemodule -->
+				<ModuleItem ID="7" ModuleIdentNumber="0x00000008">
+					<ModuleInfo CategoryRef="Input Module">
+						<Name TextId="4 Bytes In"/>
+						<InfoText TextId="4 Bytes In"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="7" SubmoduleIdentNumber="0x00000007">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="OctetString" Length="4" TextId="Inputs"/>
+								</Input>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Ausgabemodule -->
+				<ModuleItem ID="8" ModuleIdentNumber="0x00000009">
+					<ModuleInfo CategoryRef="Output Module">
+						<Name TextId="4 Bytes Out"/>
+						<InfoText TextId="4 Bytes Out"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="8" SubmoduleIdentNumber="0x00000008">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="OctetString" Length="4" TextId="Outputs"/>
+								</Output>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Eingabemodule -->
+				<ModuleItem ID="9" ModuleIdentNumber="0x0000000A">
+					<ModuleInfo CategoryRef="Input Module">
+						<Name TextId="8 Bytes In"/>
+						<InfoText TextId="8 Bytes In"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="9" SubmoduleIdentNumber="0x00000009">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="OctetString" Length="8" TextId="Inputs"/>
+								</Input>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Ausgabemodule -->
+				<ModuleItem ID="10" ModuleIdentNumber="0x0000000B">
+					<ModuleInfo CategoryRef="Output Module">
+						<Name TextId="8 Bytes Out"/>
+						<InfoText TextId="8 Bytes Out"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="10" SubmoduleIdentNumber="0x0000000A">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="OctetString" Length="8" TextId="Outputs"/>
+								</Output>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Eingabemodule -->
+				<ModuleItem ID="11" ModuleIdentNumber="0x0000000C">
+					<ModuleInfo CategoryRef="Input Module">
+						<Name TextId="12 Bytes In"/>
+						<InfoText TextId="12 Bytes In"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="11" SubmoduleIdentNumber="0x0000000B">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="OctetString" Length="12" TextId="Inputs"/>
+								</Input>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Ausgabemodule -->
+				<ModuleItem ID="12" ModuleIdentNumber="0x0000000D">
+					<ModuleInfo CategoryRef="Output Module">
+						<Name TextId="12 Bytes Out"/>
+						<InfoText TextId="12 Bytes Out"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="12" SubmoduleIdentNumber="0x0000000C">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="OctetString" Length="12" TextId="Outputs"/>
+								</Output>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Eingabemodule -->
+				<ModuleItem ID="13" ModuleIdentNumber="0x0000000E">
+					<ModuleInfo CategoryRef="Input Module">
+						<Name TextId="16 Bytes In"/>
+						<InfoText TextId="16 Bytes In"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="13" SubmoduleIdentNumber="0x0000000D">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="OctetString" Length="16" TextId="Inputs"/>
+								</Input>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Ausgabemodule -->
+				<ModuleItem ID="14" ModuleIdentNumber="0x0000000F">
+					<ModuleInfo CategoryRef="Output Module">
+						<Name TextId="16 Bytes Out"/>
+						<InfoText TextId="16 Bytes Out"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="14" SubmoduleIdentNumber="0x0000000E">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="OctetString" Length="16" TextId="Outputs"/>
+								</Output>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Eingabemodule -->
+				<ModuleItem ID="15" ModuleIdentNumber="0x00000010">
+					<ModuleInfo CategoryRef="Input Module">
+						<Name TextId="20 Bytes In"/>
+						<InfoText TextId="20 Bytes In"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="15" SubmoduleIdentNumber="0x0000000F">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="OctetString" Length="20" TextId="Inputs"/>
+								</Input>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Ausgabemodule -->
+				<ModuleItem ID="16" ModuleIdentNumber="0x00000011">
+					<ModuleInfo CategoryRef="Output Module">
+						<Name TextId="20 Bytes Out"/>
+						<InfoText TextId="20 Bytes Out"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="16" SubmoduleIdentNumber="0x00000010">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="OctetString" Length="20" TextId="Outputs"/>
+								</Output>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Eingabemodule -->
+				<ModuleItem ID="17" ModuleIdentNumber="0x00000012">
+					<ModuleInfo CategoryRef="Input Module">
+						<Name TextId="32 Bytes In"/>
+						<InfoText TextId="32 Bytes In"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="17" SubmoduleIdentNumber="0x00000011">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="OctetString" Length="32" TextId="Inputs"/>
+								</Input>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Ausgabemodule -->
+				<ModuleItem ID="18" ModuleIdentNumber="0x00000013">
+					<ModuleInfo CategoryRef="Output Module">
+						<Name TextId="32 Bytes Out"/>
+						<InfoText TextId="32 Bytes Out"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="18" SubmoduleIdentNumber="0x00000012">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="OctetString" Length="32" TextId="Outputs"/>
+								</Output>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Eingabemodule -->
+				<ModuleItem ID="19" ModuleIdentNumber="0x00000014">
+					<ModuleInfo CategoryRef="Input Module">
+						<Name TextId="64 Bytes In"/>
+						<InfoText TextId="64 Bytes In"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="19" SubmoduleIdentNumber="0x00000013">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="OctetString" Length="64" TextId="Inputs"/>
+								</Input>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Ausgabemodule -->
+				<ModuleItem ID="20" ModuleIdentNumber="0x00000015">
+					<ModuleInfo CategoryRef="Output Module">
+						<Name TextId="64 Bytes Out"/>
+						<InfoText TextId="64 Bytes Out"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="20" SubmoduleIdentNumber="0x00000014">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="OctetString" Length="64" TextId="Outputs"/>
+								</Output>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Eingabemodule -->
+				<ModuleItem ID="21" ModuleIdentNumber="0x00000016">
+					<ModuleInfo CategoryRef="Input Module">
+						<Name TextId="128 Bytes In"/>
+						<InfoText TextId="128 Bytes In"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="21" SubmoduleIdentNumber="0x00000015">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="OctetString" Length="128" TextId="Inputs"/>
+								</Input>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Ausgabemodule -->
+				<ModuleItem ID="22" ModuleIdentNumber="0x00000017">
+					<ModuleInfo CategoryRef="Output Module">
+						<Name TextId="128 Bytes Out"/>
+						<InfoText TextId="128 Bytes Out"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="22" SubmoduleIdentNumber="0x00000016">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="OctetString" Length="128" TextId="Outputs"/>
+								</Output>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Eingabemodule -->
+				<ModuleItem ID="23" ModuleIdentNumber="0x00000018">
+					<ModuleInfo CategoryRef="Input Module">
+						<Name TextId="256 Bytes In"/>
+						<InfoText TextId="256 Bytes In"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="23" SubmoduleIdentNumber="0x00000017">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="OctetString" Length="256" TextId="Inputs"/>
+								</Input>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Ausgabemodule -->
+				<ModuleItem ID="24" ModuleIdentNumber="0x00000019">
+					<ModuleInfo CategoryRef="Output Module">
+						<Name TextId="256 Bytes Out"/>
+						<InfoText TextId="256 Bytes Out"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="24" SubmoduleIdentNumber="0x00000018">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="OctetString" Length="256" TextId="Outputs"/>
+								</Output>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Eingabemodule -->
+				<ModuleItem ID="41" ModuleIdentNumber="0x0000002A">
+					<ModuleInfo CategoryRef="Input Module">
+						<Name TextId="1 Integer8 In"/>
+						<InfoText TextId="1 Integer8 In"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="41" SubmoduleIdentNumber="0x00000029">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="Integer8" TextId="Inputs"/>
+								</Input>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Ausgabemodule -->
+				<ModuleItem ID="42" ModuleIdentNumber="0x0000002B">
+					<ModuleInfo CategoryRef="Output Module">
+						<Name TextId="1 Integer8 Out"/>
+						<InfoText TextId="1 Integer8 Out"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="42" SubmoduleIdentNumber="0x0000002a">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="Integer8" TextId="Outputs"/>
+								</Output>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Eingabemodule -->
+				<ModuleItem ID="43" ModuleIdentNumber="0x0000002C">
+					<ModuleInfo CategoryRef="Input Module">
+						<Name TextId="1 Integer16 In"/>
+						<InfoText TextId="1 Integer16 In"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="43" SubmoduleIdentNumber="0x0000002b">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="Integer16" TextId="Inputs"/>
+								</Input>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Ausgabemodule -->
+				<ModuleItem ID="44" ModuleIdentNumber="0x0000002D">
+					<ModuleInfo CategoryRef="Output Module">
+						<Name TextId="1 Integer16 Out"/>
+						<InfoText TextId="1 Integer16 Out"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="44" SubmoduleIdentNumber="0x0000002c">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="Integer16" TextId="Outputs"/>
+								</Output>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Eingabemodule -->
+				<ModuleItem ID="45" ModuleIdentNumber="0x0000002E">
+					<ModuleInfo CategoryRef="Input Module">
+						<Name TextId="1 Integer32 In"/>
+						<InfoText TextId="1 Integer32 In"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="45" SubmoduleIdentNumber="0x0000002d">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="Integer32" TextId="Inputs"/>
+								</Input>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Ausgabemodule -->
+				<ModuleItem ID="46" ModuleIdentNumber="0x0000002F">
+					<ModuleInfo CategoryRef="Output Module">
+						<Name TextId="1 Integer32 Out"/>
+						<InfoText TextId="1 Integer32 Out"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="46" SubmoduleIdentNumber="0x0000002e">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="Integer32" TextId="Outputs"/>
+								</Output>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Eingabemodule -->
+				<ModuleItem ID="47" ModuleIdentNumber="0x00000030">
+					<ModuleInfo CategoryRef="Input Module">
+						<Name TextId="1 Integer64 In"/>
+						<InfoText TextId="1 Integer64 In"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="47" SubmoduleIdentNumber="0x0000002f">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="Integer64" TextId="Inputs"/>
+								</Input>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Ausgabemodule -->
+				<ModuleItem ID="48" ModuleIdentNumber="0x00000031">
+					<ModuleInfo CategoryRef="Output Module">
+						<Name TextId="1 Integer64 Out"/>
+						<InfoText TextId="1 Integer64 Out"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="48" SubmoduleIdentNumber="0x00000030">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="Integer64" TextId="Outputs"/>
+								</Output>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Eingabemodule -->
+				<ModuleItem ID="49" ModuleIdentNumber="0x00000032">
+					<ModuleInfo CategoryRef="Input Module">
+						<Name TextId="1 Unsigned8 In"/>
+						<InfoText TextId="1 Unsigned8 In"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="49" SubmoduleIdentNumber="0x00000031">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="Unsigned8" TextId="Inputs"/>
+								</Input>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Ausgabemodule -->
+				<ModuleItem ID="50" ModuleIdentNumber="0x00000033">
+					<ModuleInfo CategoryRef="Output Module">
+						<Name TextId="1 Unsigned8 Out"/>
+						<InfoText TextId="1 Unsigned8 Out"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="50" SubmoduleIdentNumber="0x00000032">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="Unsigned8" TextId="Outputs"/>
+								</Output>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Eingabemodule -->
+				<ModuleItem ID="51" ModuleIdentNumber="0x00000034">
+					<ModuleInfo CategoryRef="Input Module">
+						<Name TextId="1 Unsigned16 In"/>
+						<InfoText TextId="1 Unsigned16 In"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="51" SubmoduleIdentNumber="0x00000033">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="Unsigned16" TextId="Inputs"/>
+								</Input>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Ausgabemodule -->
+				<ModuleItem ID="52" ModuleIdentNumber="0x00000035">
+					<ModuleInfo CategoryRef="Output Module">
+						<Name TextId="1 Unsigned16 Out"/>
+						<InfoText TextId="1 Unsigned16 Out"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="52" SubmoduleIdentNumber="0x00000034">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="Unsigned16" TextId="Outputs"/>
+								</Output>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Eingabemodule -->
+				<ModuleItem ID="53" ModuleIdentNumber="0x00000036">
+					<ModuleInfo CategoryRef="Input Module">
+						<Name TextId="1 Unsigned32 In"/>
+						<InfoText TextId="1 Unsigned32 In"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="53" SubmoduleIdentNumber="0x00000035">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="Unsigned32" TextId="Inputs"/>
+								</Input>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Ausgabemodule -->
+				<ModuleItem ID="54" ModuleIdentNumber="0x00000037">
+					<ModuleInfo CategoryRef="Output Module">
+						<Name TextId="1 Unsigned32 Out"/>
+						<InfoText TextId="1 Unsigned32 Out"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="54" SubmoduleIdentNumber="0x00000036">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="Unsigned32" TextId="Outputs"/>
+								</Output>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Eingabemodule -->
+				<ModuleItem ID="55" ModuleIdentNumber="0x00000038">
+					<ModuleInfo CategoryRef="Input Module">
+						<Name TextId="1 Unsigned64 In"/>
+						<InfoText TextId="1 Unsigned64 In"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="55" SubmoduleIdentNumber="0x00000037">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="Unsigned64" TextId="Inputs"/>
+								</Input>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Ausgabemodule -->
+				<ModuleItem ID="56" ModuleIdentNumber="0x00000039">
+					<ModuleInfo CategoryRef="Output Module">
+						<Name TextId="1 Unsigned64 Out"/>
+						<InfoText TextId="1 Unsigned64 Out"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="56" SubmoduleIdentNumber="0x00000038">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="Unsigned64" TextId="Outputs"/>
+								</Output>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Eingabemodule -->
+				<ModuleItem ID="57" ModuleIdentNumber="0x0000003A">
+					<ModuleInfo CategoryRef="Input Module">
+						<Name TextId="1 Float32 In"/>
+						<InfoText TextId="1 Float32 In"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="57" SubmoduleIdentNumber="0x00000039">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="Float32" TextId="Inputs"/>
+								</Input>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Ausgabemodule -->
+				<ModuleItem ID="58" ModuleIdentNumber="0x0000003B">
+					<ModuleInfo CategoryRef="Output Module">
+						<Name TextId="1 Float32 Out"/>
+						<InfoText TextId="1 Float32 Out"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="58" SubmoduleIdentNumber="0x0000003a">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="Float32" TextId="Outputs"/>
+								</Output>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Eingabemodule -->
+				<ModuleItem ID="59" ModuleIdentNumber="0x0000003C">
+					<ModuleInfo CategoryRef="Input Module">
+						<Name TextId="1 Float64 In"/>
+						<InfoText TextId="1 Float64 In"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="59" SubmoduleIdentNumber="0x0000003b">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="Float64" TextId="Inputs"/>
+								</Input>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+				<!-- Ausgabemodule -->
+				<ModuleItem ID="60" ModuleIdentNumber="0x0000003D">
+					<ModuleInfo CategoryRef="Output Module">
+						<Name TextId="1 Float64 Out"/>
+						<InfoText TextId="1 Float64 Out"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="60" SubmoduleIdentNumber="0x0000003c">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="Float64" TextId="Outputs"/>
+								</Output>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+
+			</ModuleList>
+			<!-- Diagnose-Texte -->
+			<ChannelDiagList>
+				<ChannelDiagItem ErrorType="16">
+					<Name TextId="Parametrierfehler"/>
+				</ChannelDiagItem>
+			</ChannelDiagList>
+			<GraphicsList>
+				<GraphicItem ID="1" GraphicFile="CntrlC5G"/>
+			</GraphicsList>
+			<CategoryList>
+				<CategoryItem ID="Input Module" TextId="Input Module"/>
+				<CategoryItem ID="Output Module" TextId="Output Module"/>
+			</CategoryList>
+			<ExternalTextList>
+				<PrimaryLanguage>
+					<Text TextId="Parametrierfehler" Value="Parameter assignment error"/>
+					<Text TextId="X20IF10E3-1" Value="X20IF10E3-1"/>
+					<Text TextId="DeviceDescription" Value="PROFINET IO-Device"/>
+					<!--Baugruppeneinteilung-->
+					<Text TextId="Input Module" Value="Input modules"/>
+					<Text TextId="Output Module" Value="Output modules"/>
+					<!--Eingabemodule-->
+					<Text TextId="1 Byte In" Value="1 Byte In"/>
+					<Text TextId="2 Bytes In" Value="2 Bytes In"/>
+					<Text TextId="3 Bytes In" Value="3 Bytes In"/>
+					<Text TextId="4 Bytes In" Value="4 Bytes In"/>
+					<Text TextId="8 Bytes In" Value="8 Bytes In"/>
+					<Text TextId="12 Bytes In" Value="12 Bytes In"/>
+					<Text TextId="16 Bytes In" Value="16 Bytes In"/>
+					<Text TextId="20 Bytes In" Value="20 Bytes In"/>
+					<Text TextId="32 Bytes In" Value="32 Bytes In"/>
+					<Text TextId="64 Bytes In" Value="64 Bytes In"/>
+					<Text TextId="128 Bytes In" Value="128 Bytes In"/>
+					<Text TextId="256 Bytes In" Value="256 Bytes In"/>
+					<Text TextId="1 Integer8 In" Value="1 Integer8 In"/>
+					<Text TextId="1 Integer16 In" Value="1 Integer16 In"/>
+					<Text TextId="1 Integer32 In" Value="1 Integer32 In"/>
+					<Text TextId="1 Integer64 In" Value="1 Integer64 In"/>
+					<Text TextId="1 Unsigned8 In" Value="1 Unsigned8 In"/>
+					<Text TextId="1 Unsigned16 In" Value="1 Unsigned16 In"/>
+					<Text TextId="1 Unsigned32 In" Value="1 Unsigned32 In"/>
+					<Text TextId="1 Unsigned64 In" Value="1 Unsigned64 In"/>
+					<Text TextId="1 Float32 In" Value="1 Float32 In"/>
+					<Text TextId="1 Float64 In" Value="1 Float64 In"/>
+					<Text TextId="Inputs" Value="Inputs"/>
+					<!--Ausgabemodule-->
+					<Text TextId="1 Byte Out" Value="1 Byte Out"/>
+					<Text TextId="2 Bytes Out" Value="2 Bytes Out"/>
+					<Text TextId="3 Bytes Out" Value="3 Bytes Out"/>
+					<Text TextId="4 Bytes Out" Value="4 Bytes Out"/>
+					<Text TextId="8 Bytes Out" Value="8 Bytes Out"/>
+					<Text TextId="12 Bytes Out" Value="12 Bytes Out"/>
+					<Text TextId="16 Bytes Out" Value="16 Bytes Out"/>
+					<Text TextId="20 Bytes Out" Value="20 Bytes Out"/>
+					<Text TextId="32 Bytes Out" Value="32 Bytes Out"/>
+					<Text TextId="64 Bytes Out" Value="64 Bytes Out"/>
+					<Text TextId="128 Bytes Out" Value="128 Bytes Out"/>
+					<Text TextId="256 Bytes Out" Value="256 Bytes Out"/>
+					<Text TextId="1 Integer8 Out" Value="1 Integer8 Out"/>
+					<Text TextId="1 Integer16 Out" Value="1 Integer16 Out"/>
+					<Text TextId="1 Integer32 Out" Value="1 Integer32 Out"/>
+					<Text TextId="1 Integer64 Out" Value="1 Integer64 Out"/>
+					<Text TextId="1 Unsigned8 Out" Value="1 Unsigned8 Out"/>
+					<Text TextId="1 Unsigned16 Out" Value="1 Unsigned16 Out"/>
+					<Text TextId="1 Unsigned32 Out" Value="1 Unsigned32 Out"/>
+					<Text TextId="1 Unsigned64 Out" Value="1 Unsigned64 Out"/>
+					<Text TextId="1 Float32 Out" Value="1 Float32 Out"/>
+					<Text TextId="1 Float64 Out" Value="1 Float64 Out"/>
+					<Text TextId="Outputs" Value="Outputs"/>
+					<Text TextId="Interface1" Value="Interface"/>
+					<Text TextId="Interface1Port1" Value="Interface - Port1"/>
+					<Text TextId="Interface1Port2" Value="Interface - Port2"/>
+				</PrimaryLanguage>
+				<Language xml:lang="de">
+					<Text TextId="Parametrierfehler" Value="Parametrierfehler"/>
+					<Text TextId="X20IF10E3-1" Value="X20IF10E3-1"/>
+					<Text TextId="DeviceDescription" Value="PROFINET IO-Device"/>
+					<!--Baugruppeneinteilung-->
+					<Text TextId="Input Module" Value="Eingabemodule"/>
+					<Text TextId="Output Module" Value="Ausgabemodule"/>
+					<!--Eingabemodule-->
+					<Text TextId="1 Byte In" Value="1 Byte In"/>
+					<Text TextId="2 Bytes In" Value="2 Bytes In"/>
+					<Text TextId="3 Bytes In" Value="3 Bytes In"/>
+					<Text TextId="4 Bytes In" Value="4 Bytes In"/>
+					<Text TextId="8 Bytes In" Value="8 Bytes In"/>
+					<Text TextId="12 Bytes In" Value="12 Bytes In"/>
+					<Text TextId="16 Bytes In" Value="16 Bytes In"/>
+					<Text TextId="20 Bytes In" Value="20 Bytes In"/>
+					<Text TextId="32 Bytes In" Value="32 Bytes In"/>
+					<Text TextId="64 Bytes In" Value="64 Bytes In"/>
+					<Text TextId="128 Bytes In" Value="128 Bytes In"/>
+					<Text TextId="256 Bytes In" Value="256 Bytes In"/>
+					<Text TextId="1 Integer8 In" Value="1 Integer8 In"/>
+					<Text TextId="1 Integer16 In" Value="1 Integer16 In"/>
+					<Text TextId="1 Integer32 In" Value="1 Integer32 In"/>
+					<Text TextId="1 Integer64 In" Value="1 Integer64 In"/>
+					<Text TextId="1 Unsigned8 In" Value="1 Unsigned8 In"/>
+					<Text TextId="1 Unsigned16 In" Value="1 Unsigned16 In"/>
+					<Text TextId="1 Unsigned32 In" Value="1 Unsigned32 In"/>
+					<Text TextId="1 Unsigned64 In" Value="1 Unsigned64 In"/>
+					<Text TextId="1 Float32 In" Value="1 Float32 In"/>
+					<Text TextId="1 Float64 In" Value="1 Float64 In"/>
+					<Text TextId="Inputs" Value="Eingänge"/>
+					<!--Ausgabemodule-->
+					<Text TextId="1 Byte Out" Value="1 Byte Out"/>
+					<Text TextId="2 Bytes Out" Value="2 Bytes Out"/>
+					<Text TextId="3 Bytes Out" Value="3 Bytes Out"/>
+					<Text TextId="4 Bytes Out" Value="4 Bytes Out"/>
+					<Text TextId="8 Bytes Out" Value="8 Bytes Out"/>
+					<Text TextId="12 Bytes Out" Value="12 Bytes Out"/>
+					<Text TextId="16 Bytes Out" Value="16 Bytes Out"/>
+					<Text TextId="20 Bytes Out" Value="20 Bytes Out"/>
+					<Text TextId="32 Bytes Out" Value="32 Bytes Out"/>
+					<Text TextId="64 Bytes Out" Value="64 Bytes Out"/>
+					<Text TextId="128 Bytes Out" Value="128 Bytes Out"/>
+					<Text TextId="256 Bytes Out" Value="256 Bytes Out"/>
+					<Text TextId="1 Integer8 Out" Value="1 Integer8 Out"/>
+					<Text TextId="1 Integer16 Out" Value="1 Integer16 Out"/>
+					<Text TextId="1 Integer32 Out" Value="1 Integer32 Out"/>
+					<Text TextId="1 Integer64 Out" Value="1 Integer64 Out"/>
+					<Text TextId="1 Unsigned8 Out" Value="1 Unsigned8 Out"/>
+					<Text TextId="1 Unsigned16 Out" Value="1 Unsigned16 Out"/>
+					<Text TextId="1 Unsigned32 Out" Value="1 Unsigned32 Out"/>
+					<Text TextId="1 Unsigned64 Out" Value="1 Unsigned64 Out"/>
+					<Text TextId="1 Float32 Out" Value="1 Float32 Out"/>
+					<Text TextId="1 Float64 Out" Value="1 Float64 Out"/>
+					<Text TextId="Outputs" Value="Ausgänge"/>
+					<Text TextId="Interface1" Value="Interface 1"/>
+					<Text TextId="Interface1Port1" Value="Interface 1 - Port1"/>
+					<Text TextId="Interface1Port2" Value="Interface 1 - Port2"/>
+				</Language>
+			</ExternalTextList>
+		</ApplicationProcess>
+	</ProfileBody>
+</ISO15745Profile>
